@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     if @user.save
       UserMailerJob.perform_later(@user.id)
       log_in(@user)
-      redirect_to user_path(@user.id) #, notice: 'アカウントを登録しました。'
+      redirect_to user_path(@user.id), notice: 'アカウントを登録しました。'
     else
       render :new
     end
